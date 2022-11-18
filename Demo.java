@@ -1,41 +1,87 @@
 import javax.swing.*;
 import java.awt.*;
-class Calculator extends JFrame{
-    JTextField textField;
-    JButton southButton;
-    JButton [] buttonArray;
+class AddCustomerForm extends JFrame{
+	private JLabel titleLabel;
+	private JButton addButton;
+	private JButton cancelButton;
+	
+	private JLabel idLabel;
+    private JLabel nameLabel;
+    private JLabel addressLabel;
+    private JLabel salaryLabel;
+    
+    private JTextField idText;
+    private JTextField nameText;
+    private JTextField addressText;
+    private JTextField salaryText;
 
-    Calculator(){
-        setSize(300,300);
-        setTitle("Calculator");
-        setDefaultCloseOperation(EXIT_ON_CLOSE); 
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout()); 
-        
-        textField=new JTextField("",8); //8-->size
-        textField.setFont(new Font("",1,25));
-        add("North",textField);
-
-        southButton=new JButton("South");
-        southButton.setFont(new Font("",1,25));
-        add("South",southButton);
- 
-        JPanel centerPanel=new JPanel();
-        centerPanel.setLayout(new GridLayout(4,4));
-        buttonArray=new JButton[16];
-        String[] buttonName={"7","8","9","x","4","5","6","/","1","2","3","+","0",".","=","-"};
-        for(int i=0; i<16; i++){
-            buttonArray[i]=new JButton(buttonName[i]);
-            buttonArray[i].setFont(new Font("",1,25));
-            centerPanel.add(buttonArray[i]);
-        }
-        add("Center",centerPanel);
-        
-        setVisible(true);
-    }    
+	
+	
+	
+	AddCustomerForm(){
+		setSize(400,300);
+		setTitle("Add Customer Form");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setLayout(new BorderLayout());
+		
+		titleLabel=new JLabel("Add Customer Form");
+		titleLabel.setFont(new Font("",1,25));
+		titleLabel.setHorizontalAlignment(JLabel.CENTER);
+		
+		addButton=new JButton("Add Customer");
+		addButton.setFont(new Font("",1,15));
+		
+		cancelButton=new JButton("Cancel");
+		cancelButton.setFont(new Font("",1,15));
+		
+		JPanel buttonPanel=new JPanel(new FlowLayout(FlowLayout.RIGHT)); //right align flowlayout add to button panel 
+		buttonPanel.add(addButton);
+		buttonPanel.add(cancelButton);
+		add("South",buttonPanel);
+		add("North",titleLabel);
+		
+	 //  JPanel centerPanel=new JPanel(new GridLayout(4,2));
+	    JPanel labelPanel=new JPanel(new GridLayout(4,1));
+	    JPanel textPanel=new JPanel(new GridLayout(4,1));
+	    
+	    idLabel = new JLabel("Customer ID");
+	    idLabel.setFont(new Font("",1,15));
+	    labelPanel.add(idLabel);
+	    idText=new JTextField(8);
+	    idText.setFont(new Font("",1,15));
+	    textPanel.add(idText);
+	    
+	    
+	    nameLabel = new JLabel("Name");
+	    nameLabel.setFont(new Font("",1,15));
+	    labelPanel.add(nameLabel);
+	    nameText=new JTextField(15);
+	    nameText.setFont(new Font("",1,15));
+	    textPanel.add(nameText);
+	    
+	    addressLabel = new JLabel("Address");
+	    addressLabel.setFont(new Font("",1,15));
+	    labelPanel.add(addressLabel);
+	    addressText=new JTextField(20);
+	    addressText.setFont(new Font("",1,15));
+	    textPanel.add(addressText);
+	    
+	    salaryLabel = new JLabel("Salary");
+	    salaryLabel.setFont(new Font("",1,15));
+	    labelPanel.add(salaryLabel);
+	    salaryText=new JTextField(15);
+	    salaryText.setFont(new Font("",1,15));
+	    textPanel.add(salaryText);
+	    
+	    add("West",labelPanel);
+	    add("East",textPanel);
+	    
+		setVisible(true);
+  }
 }
 class Demo{ 
     public static void main(String args[]){   
-        new Calculator();
+        new AddCustomerForm();
     } 
 }
