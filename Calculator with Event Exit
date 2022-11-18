@@ -1,0 +1,54 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+class Calculator extends JFrame{
+    JTextField textField;
+    JButton exitButton;
+    JButton [] buttonArray;
+
+    Calculator(){
+        setSize(300,300);
+        setTitle("Calculator");
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout()); 
+        
+        textField=new JTextField("",8); //8-->size
+        textField.setFont(new Font("",1,15));
+        add("North",textField);
+      
+        exitButton=new JButton("Exit");
+        exitButton.setFont(new Font("",1,25));
+        exitButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent evt){
+                System.out.println("You pressed exit button");
+            }
+        });
+        add("South",exitButton);
+        
+        
+ 
+        JPanel centerPanel=new JPanel();
+        centerPanel.setLayout(new GridLayout(4,4));
+        buttonArray=new JButton[16];
+        String[] buttonName={"7","8","9","x","4","5","6","/","1","2","3","+","0",".","=","-"};
+        for(int i=0; i<16; i++){
+            buttonArray[i]=new JButton(buttonName[i]);
+            buttonArray[i].setFont(new Font("",1,25));
+            centerPanel.add(buttonArray[i]);
+        }
+        
+
+
+        
+        
+        add("Center",centerPanel);
+        
+        setVisible(true);
+    }    
+}
+class Demo{ 
+    public static void main(String args[]){   
+        new Calculator();
+    } 
+}
